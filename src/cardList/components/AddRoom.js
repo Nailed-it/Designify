@@ -1,11 +1,14 @@
 import React,{ Component } from 'react';
+import { connect} from 'react-redux';
 import {Button, Input} from 'react-materialize';
 import { reduxForm } from 'redux-form';
+import { bindActionCreators } from 'redux';
 import { addRoom } from '../../rooms/actions/rooms.action'
 
 class AddRoom extends Component {
 
   render() {
+    console.log(this.props)
     const { fields: { roomName } , handleSubmit } = this.props;
     return (
       <form onSubmit = { handleSubmit(this.props.addRoom) } >
@@ -16,12 +19,19 @@ class AddRoom extends Component {
   }
 }
 
-export default reduxForm({
+const addRoomForm = reduxForm({
   form: 'AddRoomForm',
-  fields: ['roomName'],
-}, null, { addRoom } )(AddRoom);
-   
+  fields: ['roomName']
+})(AddRoom);
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({addRoom}, dispatch);
+}
+
+const  mapStateToProps = state => state;
+
+export default connect(mapStateToProps, mapDispatchToProps)(addRoomForm);
+    
     // Moved this outside of function  
     // const handleSubmit=this.props.handleSubmit;
     // const roomName=this.props.fields.roomName;

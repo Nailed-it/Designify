@@ -6,14 +6,11 @@ import AddFurniture from './AddFurniture';
 
 class AddItem extends Component {
   state = {
-    form: 'furniture'
+    form: 'room'
   }
 
   render() {
 
-
-    // handleSubmit = () => {}
-    const store = this.props.store
     //this.props.header
     var header;
     if(this.state.form === 'room') {
@@ -46,7 +43,7 @@ class AddItem extends Component {
           <div>
             {(() => {
               switch (this.state.form) {
-              case "room": return <AddRoom store={ store }/>;
+              case "room": return <AddRoom />;
               case "furniture": return  <AddFurniture/>;
               default: return "Did not work";
             }
