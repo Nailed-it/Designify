@@ -9,7 +9,7 @@ import BudgetView from '../../BudgetView/containers/BudgetView'
 
 const rooms = database.rooms;
 
-class RoomsList extends Component {
+export default class RoomsList extends Component {
   componentWillMount() {
     const _this = this;
     const roomNames = Object.keys(rooms);
@@ -21,17 +21,13 @@ class RoomsList extends Component {
   }
 
   render() {
+    console.log('another one', this.props.rooms);
     return (
       <Row>
         <Col s={12} m={6} l={6}>
           <div>
             <h3>Room selected: {this.props.roomSelected || 'No room selected yet'}</h3>
-            <CardList
-              clickHandler={this.props.selectRoom}
-              intro={this.props.roomSelected}
-              list={this.props.rooms}
-              store={this.props.store}
-            />
+
           </div>
         </Col>
 
@@ -42,16 +38,13 @@ class RoomsList extends Component {
           />
         </Col>
       </Row>
-    
-
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    rooms: state.rooms,
-    roomSelected: state.roomSelected
+    rooms: state.rooms
   };
 }
 
