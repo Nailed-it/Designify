@@ -9,7 +9,7 @@ import BudgetView from '../../BudgetView/containers/BudgetView'
 
 const rooms = database.rooms;
 
-class RoomsList extends Component {
+export default class RoomsList extends Component {
   componentWillMount() {
     const _this = this;
     const roomNames = Object.keys(rooms);
@@ -25,25 +25,20 @@ class RoomsList extends Component {
       <Row>
         <Col s={12} m={6} l={6}>
           <div>
-            <h3>Room selected: {this.props.roomSelected || 'No room selected yet'}</h3>
+            <h3>Room selected: {this.props.roomSelected || 'No room selected'}</h3>
             <CardList
               clickHandler={this.props.selectRoom}
               intro={this.props.roomSelected}
-              list={this.props.rooms}
-              store={this.props.store}
+              list ={this.props.rooms}
             />
           </div>
         </Col>
 
         <Col s={12} m={6} l={6}>
-          <h3>This is where the Budget Chart and Budget Graph will be</h3>
-          <BudgetView
-          store = {this.props.store}
-          />
+          <h3>Budget Chart / Graph</h3>
+          <BudgetView />
         </Col>
       </Row>
-    
-
     );
   }
 }

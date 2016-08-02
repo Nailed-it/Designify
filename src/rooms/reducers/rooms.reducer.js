@@ -4,7 +4,6 @@ import _ from 'lodash';
 
 const roomsReducer = (state = {}, action) => {
   const rooms = Object.keys(state);
-
   switch (action.type) {
     case ADD_ROOM:
       action.room = action.room || {};
