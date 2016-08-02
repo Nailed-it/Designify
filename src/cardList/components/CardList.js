@@ -17,7 +17,7 @@ class CardList extends Component {
             />
           );
         })}
-        <AddItem store={this.props.store}/>
+        <AddItem/>
       </div>
     );
   }
