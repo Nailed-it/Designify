@@ -1,32 +1,42 @@
-import React,{ Component } from 'react';
-import {Button, Input, Col, Row} from 'react-materialize';
+import React, { Component } from 'react';
+import {Button, Input, Row} from 'react-materialize';
 import DatePicker from 'material-ui/DatePicker';
 import { reduxForm } from 'redux-form';
 import { connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { addFurniture } from '../../furniture/actions/furniture.action';
 
 class AddFurnitureForm extends Component {
   render() {
-    console.log('[AddFurnitureForm form] roomSelected: ', this.props.roomSelected);
+    const { fields: { itemName, price, description, url, deliveryDate, roomSelected }, handleSubmit } = this.props;
 
     return (
-      <div>
+      <form onSubmit={ handleSubmit(this.props.addFurniture.bind(null, this.props.roomSelected)) }>
         <Row>
-          <Input s={6} placeholder='Item'/><Input s={6} placeholder='Price'/>
+          <Input s={6} placeholder='Item'{ ...itemName } />
+          <Input s={6} placeholder='Price'{ ...price } />
         </Row>
         <Row>
-          <Input s={6} placeholder='Description'/><Input s={6} placeholder='URL'/>
+          <Input s={6} placeholder='Description'{ ...description } />
+          <Input s={6} placeholder='URL'{ ...url } />
         </Row>
         <Row>
-          <Input s={6} placeholder='Delivery Date' label='Date' />
+          <Input s={6} placeholder='Delivery Date' label='Date' { ...deliveryDate } />
         </Row>
-        </div>
-      )
+        <Button type="submit">Submit</Button>
+      </form>
+    )
   }
 }
 
-function mapStateToProps({ roomSelected }) {
-  return { roomSelected };
-}
+export default reduxForm({
+  form: 'AddFurnitureForm',
+  fields: ['itemName', 'price', 'description', 'url', 'deliveryDate', 'roomSelected']
+}, state => ({ roomSelected: state.roomSelected }), {addFurniture})(AddFurnitureForm);
 
-export default connect(mapStateToProps)(AddFurnitureForm);
+
+//function mapStateToProps({ roomSelected }) {
+//  return { roomSelected };
+//}
+//
+//export default connect(mapStateToProps)(AddFurnitureForm);

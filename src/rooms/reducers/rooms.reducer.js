@@ -14,9 +14,14 @@ const roomsReducer = (state = {}, action) => {
       }
       return Object.assign(_.cloneDeep(state), action.room);
     case ADD_FURNITURE:
+      if (!action.roomName) {
+        return state;
+      }
       newState = _.clone(state);
-      const furnitureName = Object.keys(action.furnitureName)[0];
-      newState[action.roomName][furnitureName] = action.furnitureName[furnitureName];
+      const roomName = action.roomName;
+      const furnitureName = action.furnitureProps.itemName;
+      delete action.furnitureProps.itemName;
+      newState[roomName].furniture[furnitureName] = action.furnitureProps;
       return newState;
     case DELETE_FURNITURE:
       newState = _.clone(state);
@@ -33,3 +38,22 @@ const roomsReducer = (state = {}, action) => {
 };
 
 export default roomsReducer;
+
+/*
+ deliveryDate
+ :
+ undefined
+ description
+ :
+ undefined
+ itemName
+ :
+ "aoe"
+ price
+ :
+ "oae"
+
+ url
+ :
+ undefined
+ */

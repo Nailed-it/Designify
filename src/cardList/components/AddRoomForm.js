@@ -6,10 +6,9 @@ import { bindActionCreators } from 'redux';
 import { addRoom } from '../../rooms/actions/rooms.action'
 
 class AddRoomForm extends Component {
-
   render() {
-    
     const { fields: { roomName } , handleSubmit } = this.props;
+
     return (
       <form onSubmit = { handleSubmit(this.props.addRoom) } >
         <Input type="text" placeholder="Room Name" s={12} label="Room Name" { ...roomName } />

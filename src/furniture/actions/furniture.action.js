@@ -4,11 +4,11 @@ export const UPDATE_FURNITURE = 'UPDATE_FURNITURE';
 
 // NOTE: Many corresponding reducers are in rooms.reducer, not in the furniture directory
 
-export function addFurniture(furnitureName, roomName) {
+export function addFurniture(roomName, furnitureProps) {
   return {
     type: ADD_FURNITURE,
-    furnitureName,
-    roomName
+    roomName,
+    furnitureProps,
   };
 }
 

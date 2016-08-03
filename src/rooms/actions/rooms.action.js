@@ -15,7 +15,6 @@ export function addRoomFromDb(room) {
 }
 
 export function addRoom(room) {
-  console.log('room data sent to addRoom fn: ', room);
   const roomName = room.roomName;
   room = {};
   room[roomName] = { furniture: {} };
