@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from './root.reducer';
 import promise from 'redux-promise';
+import reduxThunk from 'redux-thunk';
 
 //<editor-fold desc="Define Redux browser extension middleware">
 let windowDevToolsExtension;
@@ -19,7 +20,7 @@ try {
 // store or not, based on the environment/mode.
 const allMiddleware = [
   {
-    middleware: applyMiddleware(promise),
+    middleware: applyMiddleware(promise, reduxThunk),
     production:  true,
     development: true,
     test:        true,

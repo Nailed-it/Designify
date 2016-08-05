@@ -1,11 +1,14 @@
-import { ADD_ROOM, GET_ROOMS, REMOVE_ROOM } from '../actions/rooms.action';
+import { ADD_ROOM, GET_ROOMS, REMOVE_ROOM, ADD_PHOTO } from '../actions/rooms.action';
 import { ADD_FURNITURE, DELETE_FURNITURE, UPDATE_FURNITURE} from '../../furniture/actions/furniture.action';
 import _ from 'lodash';
 
 const roomsReducer = (state = {}, action) => {
   let newState;
   switch (action.type) {
-
+    case ADD_PHOTO:
+    newState = _.clone(state);
+    newState[action.selectedRoom].photoURL = action.url;
+    return newState;
     //handles initial pull from db
     case GET_ROOMS:
       let rooms = action.payload.val();

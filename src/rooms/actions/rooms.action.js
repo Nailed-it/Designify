@@ -2,12 +2,25 @@ import { getRooms as getter, addRoom as adder, removeRoom as remover, uploadPhot
 
 export const ADD_PHOTO = 'ADD_PHOTO';
 export function addPhoto(file, selectedRoom) {
-  console.log("got here")
-  var url = uploadPhoto(file)
-  console.log(url);
-  return {
-    type: ADD_PHOTO,
-    payload: url,
+  // var url = uploadPhoto(file);
+  // var payload = {
+  //   url,
+  //   selectedRoom: "bathroom"
+  // }
+
+  // return {
+  //   type: ADD_PHOTO,
+  //   payload
+  // };
+  return function(dispatch) {
+    uploadPhoto(file).then(function(snapshot) {
+      var url = snapshot.metadata.downloadURLs[0];
+      dispatch({
+        type: ADD_PHOTO,
+        url,
+        selectedRoom: "bathroom",
+      });
+    });
   };
 }
 
