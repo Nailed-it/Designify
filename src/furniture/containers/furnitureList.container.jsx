@@ -44,7 +44,7 @@ class FurnitureList extends Component {
                     )
                   }
                   return (
-                    <li key ={i} className="tab col s3" ><span onClick={() => {this.click(room)}} style={{'cursor':'default'}}>{room}</span></li>
+                    <li key={i} className="tab col s3" ><span onClick={() => {this.props.selectRoom(room)}} style={{'cursor':'default'}}>{room}</span></li>
                   )
                 })}
               </ul>

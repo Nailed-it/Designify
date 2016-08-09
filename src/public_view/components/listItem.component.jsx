@@ -57,15 +57,3 @@ class ListItem extends Component {
 }
 
 export default ListItem;
-
-   //  <p >
-   //            Plans to spend: ${lists.budget}
-   //          </p>
-   //          <p>
-   // <Row>
-   //                    <Col s={6}>
-   //                    {itemName},{" "}
-   //                    </Col>
-   //                  </Row>
-
-   //                            Rooms:{" "}

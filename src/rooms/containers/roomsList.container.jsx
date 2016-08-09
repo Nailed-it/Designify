@@ -17,7 +17,9 @@ export default class RoomsList extends Component {
     this.props.getRooms();
   }
 
-
+  changePublicStatus() {
+    this.props.makePublic_Private(this.props.shared);
+  }
   onDrop(files) {
     // console.log('Received files: ', files);
     this.props.addPhoto(files);
@@ -32,6 +34,7 @@ export default class RoomsList extends Component {
               <span className="RoomListHeader"></span>
               <CardList
                 clickHandler={this.props.selectRoom}
+                addPhoto={this.onDrop}
                 intro={this.props.roomSelected}
                 list={this.props.rooms}
                 view="rooms"
@@ -45,9 +48,7 @@ export default class RoomsList extends Component {
             </div>
           </Col>
         </Row>
-        <Dropzone onDrop={files => this.onDrop(files)}>
-          <div>Try dropping some files here, or click to select files to upload.</div>
-        </Dropzone>
+        
       </div>
     );
   }
@@ -62,3 +63,13 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RoomsList);
+<<<<<<< cb2768857fe009a68a636d917d26ee4bcd303da3
+||||||| merged common ancestors
+
+// <Button onClick={ () => {this.changePublicStatus()} }>public: {"" + this.props.shared}</Button>
+=======
+
+
+
+// <Button onClick={ () => {this.changePublicStatus()} }>public: {"" + this.props.shared}</Button>
+>>>>>>> feat(wip): add photo upload to roomlist button
