@@ -11,7 +11,6 @@ class ListItem extends Component {
   handleClick(title) {
     if (this.props.clickHandler) {
       this.props.clickHandler(title);
-      browserHistory.push('/room/' + title)
 
     }
   }
@@ -53,9 +52,6 @@ class ListItem extends Component {
     }
     console.log(this.props)
     const title = this.props.title;
-    // if(this.props.rooms[this.props.roomSelected].photoURL) {
-    //   const photo = this.props.rooms[this.props.roomSelected].photoURL;
-    // }
 
     return (
     
