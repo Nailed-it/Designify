@@ -17,6 +17,20 @@ const roomsReducer = (state = {}, action) => {
     //handles initial pull from db
     case GET_ROOMS:
       let rooms = action.payload.val();
+      for (var roomName in rooms) {
+        if (room) {
+          let room = rooms[roomName];
+          let design = room.design;
+          let designArr = [];
+          for (var designObjName in design) {
+            if (designObjName) {
+              let designObj = design[designObjName];
+              designArr.push(designObj);
+            }
+          }
+          rooms[roomName].design = designArr;
+        }
+      }
       return Object.assign(_.cloneDeep(state), rooms);
 
     case ADD_ROOM:
